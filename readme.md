@@ -5,3 +5,12 @@
 ## origine
 
 Site gemaakt nav youtube cursus van codemy.com
+
+## file structure
+.
++-- cfi_blog
++-- theblog
+|   +-- models.py
++-- users
++-- manage.py
++-- readme.md
