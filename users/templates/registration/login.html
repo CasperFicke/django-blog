@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+
+<h1>Login</h1>
+<div class="col-md-6 offset-md-3">
+<div class="form-group">
+  <form method="POST">
+    <!-- django commando om input token te maken -->
+    {% csrf_token %}
+    <!-- django shortcut om compleet formulier te maken
+    {{ form.as_p }} -->
+    <div class="form-group">
+      <label for="username1">Username</label>
+      <input type="text" class="form-control" name="username" placeholder="username">
+    </div>
+    <div class="form-group">
+      <label for="InputPassword1">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="password">
+    </div>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+    <button class="btn btn-secondary">Login</button>
+  </form>
+  <br/><br/>
+  Not registred yet? Sign Up <a href="{% url 'register' %}">Here..</a>
+  <br/>
+  <a class="btn btn-secondary" href="{% url 'home' %}">Cancel</a>
+</div>
+</div>
+
+ 
+{% endblock %}
+
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block title %}
+  Register
+{% endblock %}
+
+{% block content %}
+
+<h1>Register</h1>
+ <div class="col-md-6 offset-md-3">
+<div class="form-group">
+  <form method="POST">
+    <!-- django commando om input token te maken -->
+    {% csrf_token %}
+    <!-- django shortcut om compleet formulier te maken --> 
+    {{ form.as_p }}
+    <button class="btn btn-secondary">Register</button>
+  </form>
+</div>
+</div>
+ 
+{% endblock %}
+
+

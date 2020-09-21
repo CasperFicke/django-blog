@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+{% if category_posts %}
+
+<h1>Posts in de categorie "{{ cats }}"</h1>
+
+<ul>
+  {% for post in category_posts %}
+    <li>
+      <a href="{% url 'post-view' post.pk %}">{{ post.title }}</a>
+      - {{ post.author.first_name }}
+      {{ post.author.last_name }}
+      - {{ post.post_date }} 
+      {% if user.is_authenticated and post.author.id == user.id %}
+        - <a href="{% url 'update_post' post.pk %}">(Edit)</a> - 
+        <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+      {% endif %} 
+      <br/>
+      {{ post.body|slice:":200"|safe }}...
+    </li>
+  {% endfor %}
+</ul>
+
+{% else %}
+<h2>Deze pagina bestaat niet</h2>
+{% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% block title %}
+  Update an existing blog post
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated and post.author.id == user.id %}
+  <h1>Update Post.. </h1>
+  <div class="form-group">
+    <form method="POST">
+      <!-- django commando om input token te maken -->
+      {% csrf_token %}
+      <!-- django shortcut om compleet formulier te maken --> 
+      {{ form.media }}
+      {{ form.as_p }}
+      <button class="btn btn-secondary">Update</button>
+    </form>
+    <br/><br/>
+    <a class="btn btn-secondary" href="{% url 'home' %}">Cancel</a>
+  </div>
+{% else %}
+<h3> Opvragen van deze pagina is niet toegestaan. Hiervoor moet u ingelogd zijn!</h3>
+{% endif %}
+
+ 
+{% endblock %}
+
+

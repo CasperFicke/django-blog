@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block title %}
+  Comment on blog post
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  <h1>Add Comment.. </h1>
+  <div class="form-group">
+    <form method="POST">
+      <!-- django commando om input token te maken -->
+      {% csrf_token %}
+      <!-- django shortcut om compleet formulier te maken --> 
+      {{ form.as_p }}
+      <button class="btn btn-secondary">Add Comment</button>
+    </form>
+  </div>
+  <!-- javascript om in de frontend te zorgen dat een nieuwe comment de ingelogde user als author krijgt -->
+  <script>
+    var name = "{{ user.id }}";
+    document.getElementById("authorfield").value = name;
+  </script>
+{% else %}
+  <h3> Opvragen van deze pagina is niet toegestaan. Hiervoor moet u ingelogd zijn!</h3>
+{% endif %}
+ 
+{% endblock %}
+
+

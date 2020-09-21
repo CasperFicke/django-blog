@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+ User profile
+{% endblock %}
+
+{% block content %}
+
+<h1>User profile</h1>
+
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-2">
+      {% if post.author.userprofile.profile_pic %}
+        <img src="{{ page_user.profile_pic.url }}" class="card-img">
+        {% else %}
+          <img src="{% static 'theblog/images/standard.jpg' %}" class="card-img">
+      {% endif %}
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ post.author.user.first_name }} 
+          {{ post.author.user.last_name }}
+        </h5>
+        <p class="card-text">
+          <small class="text-muted">
+            {% if post.author.userprofile.website_url %}
+             <a href="{{ page_user.website_url }}">Website</a>
+            {% endif %}
+            {% if post.author.userprofile.twitter_url %}
+             | <a href="{{ page_user.twitter_url }}">Twitter</a>
+            {% endif %}
+            {% if post.author.userprofile.facebook_url %}
+             | <a href="{{ page_user.facebook_url }}">Facebook</a>
+            {% endif %}
+          </small>
+        </p>
+        <p class="card-text"> {{ page_user.bio}}</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
